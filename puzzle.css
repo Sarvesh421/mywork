@@ -1,0 +1,618 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    overflow-x: hidden;
+}
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 255, 255, 0.15),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 30%,
+            rgba(255, 255, 255, 0.12),
+            transparent 30%
+        );
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+header {
+    text-align: center;
+    padding: 30px 15px 20px;
+}
+
+header h1 {
+    font-size: clamp(26px, 5vw, 48px);
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: clamp(14px, 3vw, 20px);
+}
+
+
+/* =========================================
+   GAME INFO
+========================================= */
+
+.game-info {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 15px;
+    flex-wrap: wrap;
+}
+
+.info-box {
+    width: 150px;
+    padding: 18px;
+    text-align: center;
+
+    border-radius: 18px;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.info-box h2 {
+    margin-top: 8px;
+    font-size: 24px;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+
+button {
+    border: none;
+    border-radius: 50px;
+
+    padding: 14px 28px;
+
+    background: #ffd900;
+    color: #111;
+
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+/* =========================================
+   MAIN CONTAINER
+========================================= */
+
+.container {
+    width: min(1100px, 94%);
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 30px;
+
+    padding: 20px 0 50px;
+}
+
+
+/* =========================================
+   BOARD + PIECES CARDS
+========================================= */
+
+.board,
+.pieces {
+    min-width: 0;
+
+    padding: 25px;
+
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.14);
+
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.board h2,
+.pieces h2 {
+    font-size: 28px;
+    margin-bottom: 18px;
+}
+
+
+/* =========================================
+   PUZZLE BOARD
+
+   IMPORTANT:
+   This MUST be .puzzle-grid
+========================================= */
+
+.puzzle-grid {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+
+    gap: 0;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background: #222;
+
+    border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+
+/* =========================================
+   PUZZLE SLOTS
+========================================= */
+
+.slot {
+    width: 100%;
+    height: 100%;
+
+    min-width: 0;
+    min-height: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+
+    border-radius: 0;
+}
+
+
+/* Highlight while dragging */
+
+.slot.over {
+    outline: 3px solid #ffd900;
+    outline-offset: -3px;
+
+    background: rgba(255, 215, 0, 0.2);
+}
+
+
+/* =========================================
+   PUZZLE PIECES
+========================================= */
+
+.pieces-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 12px;
+}
+
+
+/* =========================================
+   INDIVIDUAL PIECE
+========================================= */
+
+.piece {
+    width: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    display: block;
+
+    background-repeat: no-repeat;
+
+    background-size: 300% 300%;
+
+    border-radius: 10px;
+
+    cursor: grab;
+
+    user-select: none;
+    -webkit-user-select: none;
+
+    touch-action: none;
+
+    box-shadow:
+        0 6px 15px rgba(0, 0, 0, 0.25);
+
+    transition:
+        transform 0.15s ease,
+        opacity 0.15s ease;
+}
+
+.piece:active {
+    cursor: grabbing;
+}
+
+.piece.dragging {
+    opacity: 0.4;
+    transform: scale(1.03);
+}
+
+
+/* =========================================
+   MOBILE DRAG CLONE
+========================================= */
+
+.drag-clone {
+    position: fixed;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1.05);
+
+    z-index: 99999;
+
+    pointer-events: none;
+
+    border-radius: 10px;
+
+    background-repeat: no-repeat;
+
+    background-size: 300% 300%;
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =========================================
+   PREVIEW
+========================================= */
+
+.preview {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    z-index: 9999;
+
+    padding: 15px;
+}
+
+.preview-content {
+    width: min(92vw, 600px);
+
+    max-height: 90vh;
+
+    overflow: auto;
+
+    background: rgba(255, 255, 255, 0.15);
+
+    backdrop-filter: blur(20px);
+
+    border-radius: 22px;
+
+    padding: 20px;
+
+    text-align: center;
+}
+
+.preview-content h2 {
+    margin-bottom: 15px;
+}
+
+.preview-image {
+    display: block;
+
+    width: 100%;
+
+    max-width: 500px;
+
+    max-height: 70vh;
+
+    object-fit: contain;
+
+    margin: auto;
+
+    border-radius: 15px;
+}
+
+.close-btn {
+    float: right;
+
+    background: #ff4757;
+
+    color: white;
+
+    padding: 9px 16px;
+
+    font-size: 14px;
+}
+
+
+/* =========================================
+   SUCCESS POPUP
+========================================= */
+
+.success {
+    display: none;
+
+    position: fixed;
+
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.75);
+
+    justify-content: center;
+    align-items: center;
+
+    z-index: 10000;
+
+    padding: 20px;
+}
+
+.success-box {
+    background: white;
+
+    color: black;
+
+    padding: 35px;
+
+    border-radius: 25px;
+
+    text-align: center;
+
+    max-width: 90%;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+    .container {
+        grid-template-columns: 1fr;
+
+        width: min(650px, 94%);
+    }
+
+    .board,
+    .pieces {
+        width: 100%;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+    header {
+        padding: 22px 12px 15px;
+    }
+
+    header h1 {
+        font-size: 27px;
+    }
+
+    header p {
+        font-size: 15px;
+    }
+
+
+    .game-info {
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 7px;
+
+        padding: 10px;
+    }
+
+    .info-box {
+        width: 100%;
+
+        padding: 11px 4px;
+
+        border-radius: 14px;
+    }
+
+    .info-box h2 {
+        font-size: 17px;
+    }
+
+
+    .buttons {
+        gap: 10px;
+
+        padding: 15px 10px;
+    }
+
+    button {
+        padding: 12px 18px;
+
+        font-size: 14px;
+    }
+
+
+    .container {
+        width: 94%;
+
+        display: grid;
+
+        grid-template-columns: 1fr;
+
+        gap: 20px;
+
+        padding: 10px 0 30px;
+    }
+
+
+    .board,
+    .pieces {
+        width: 100%;
+
+        padding: 16px;
+
+        border-radius: 20px;
+    }
+
+
+    .board h2,
+    .pieces h2 {
+        font-size: 23px;
+
+        text-align: center;
+
+        margin-bottom: 15px;
+    }
+
+
+    /*
+       IMPORTANT:
+       Keep the board as one
+       perfect square.
+    */
+
+    .puzzle-grid {
+        width: 100%;
+
+        aspect-ratio: 1 / 1;
+
+        gap: 0;
+
+        border-radius: 12px;
+    }
+
+
+    .pieces-grid {
+        width: 100%;
+
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 8px;
+    }
+
+
+    .piece {
+        width: 100%;
+
+        aspect-ratio: 1 / 1;
+
+        border-radius: 8px;
+    }
+
+}
+
+
+/* =========================================
+   VERY SMALL PHONES
+========================================= */
+
+@media (max-width: 380px) {
+
+    .container {
+        width: 96%;
+    }
+
+    .board,
+    .pieces {
+        padding: 12px;
+    }
+
+    .board h2,
+    .pieces h2 {
+        font-size: 20px;
+    }
+
+    .pieces-grid {
+        gap: 6px;
+    }
+
+    .game-info {
+        gap: 5px;
+    }
+
+    .info-box {
+        padding: 9px 2px;
+    }
+
+    .info-box h2 {
+        font-size: 15px;
+    }
+
+}

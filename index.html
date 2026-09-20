@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday Brother ❤️</title>
+
+    <link rel="stylesheet" href="./style.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <!-- ================= LOADER ================= -->
+
+    <div id="loader">
+
+        <h1>Loading Memories...</h1>
+
+        <p id="loadingText">
+            Preparing your memories...
+        </p>
+
+        <div class="loader-bar">
+            <div id="loaderProgress"></div>
+        </div>
+
+        <p class="loading-percent">
+            <span id="loadingPercent">0</span>%
+        </p>
+
+    </div>
+
+
+    <!-- ================= PASSWORD SCREEN ================= -->
+
+    <div id="lockScreen">
+
+        <div class="login-box">
+
+            <div class="lock-icon">
+                🔐
+            </div>
+
+            <h1>Birthday Surprise</h1>
+
+            <p class="subtitle">
+                Enter the secret password
+            </p>
+
+            <p class="note">
+                Enter your 16th year birthday date
+            </p>
+
+
+            <!-- 8 PASSWORD DOTS -->
+
+            <div id="passwordDisplay" class="password-display">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <!-- MESSAGE -->
+
+            <p id="message" class="password-message"></p>
+
+
+            <!-- NUMBER PAD -->
+
+            <div class="keypad">
+
+                <button onclick="enterDigit('1')">1</button>
+                <button onclick="enterDigit('2')">2</button>
+                <button onclick="enterDigit('3')">3</button>
+
+                <button onclick="enterDigit('4')">4</button>
+                <button onclick="enterDigit('5')">5</button>
+                <button onclick="enterDigit('6')">6</button>
+
+                <button onclick="enterDigit('7')">7</button>
+                <button onclick="enterDigit('8')">8</button>
+                <button onclick="enterDigit('9')">9</button>
+
+                <button class="empty-key"></button>
+
+                <button onclick="enterDigit('0')">0</button>
+
+                <button
+                    class="delete-key"
+                    onclick="deleteDigit()">
+                    ⌫
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================= MAIN WEBSITE ================= -->
+
+    <div id="main">
+
+        <header>
+
+            <h1>
+                🎂 Happy Birthday Brother 🎂
+            </h1>
+
+            <p>
+                Welcome to your Birthday Adventure ❤️
+            </p>
+
+            <button id="startBtn">
+                Start Adventure 🚀
+            </button>
+
+        </header>
+
+
+        <section class="cards">
+
+            <div class="card">
+
+                <h2>📸 Childhood Memories</h2>
+
+                <p>
+                    See our unforgettable moments.
+                </p>
+
+            </div>
+
+
+            <div
+             class="card"
+             onclick="window.location.href='quiz.html'"
+>
+
+            <h2>😂 Funny Quiz</h2>
+
+             <p>
+                Let's see how much you remember!
+            </p>
+
+            </div>
+
+
+            <div
+                class="card"
+                onclick="window.location.href='puzzle.html'"
+            >
+
+                <h2>🎮 Games</h2>
+
+                <p>
+                    Play and unlock surprises.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h2>🎁 Secret Gift</h2>
+
+                <p>
+                    Only after completing everything!
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+
+            Made with ❤️ by Your Brother Sarvesh
+
+        </footer>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

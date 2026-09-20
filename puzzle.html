@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Childhood Memory Puzzle 🧩</title>
+
+    <!-- Puzzle CSS -->
+    <link rel="stylesheet" href="./puzzle.css">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+<!-- ======================================
+     BACKGROUND
+======================================= -->
+
+<div class="background"></div>
+
+
+<!-- ======================================
+     HEADER
+======================================= -->
+
+<header>
+
+    <h1>
+        🧩 Childhood Memory Puzzle
+    </h1>
+
+    <p>
+        Drag every piece into the correct position ❤️
+    </p>
+
+</header>
+
+
+<!-- ======================================
+     GAME INFORMATION
+======================================= -->
+
+<div class="game-info">
+
+    <div class="info-box">
+
+        ⏱ Time
+
+        <h2 id="timer">
+            00:00
+        </h2>
+
+    </div>
+
+
+    <div class="info-box">
+
+        🎯 Moves
+
+        <h2 id="moves">
+            0
+        </h2>
+
+    </div>
+
+
+    <div class="info-box">
+
+        ⭐ Puzzle
+
+        <h2 id="puzzleNumber">
+            1 / 3
+        </h2>
+
+    </div>
+
+</div>
+
+
+<!-- ======================================
+     BUTTONS
+======================================= -->
+
+<div class="buttons">
+
+    <button id="previewBtn">
+        👀 Preview
+    </button>
+
+
+    <button id="restartBtn">
+        🔄 Shuffle Again
+    </button>
+
+</div>
+
+
+<!-- ======================================
+     MAIN CONTAINER
+======================================= -->
+
+<div class="container">
+
+
+    <!-- ==================================
+         PUZZLE BOARD
+    =================================== -->
+
+    <div class="board">
+
+        <h2>
+            🧩 Puzzle Board
+        </h2>
+
+
+        <div
+            id="dropZone"
+            class="puzzle-grid"
+        >
+
+            <div
+                class="slot"
+                data-index="0">
+            </div>
+
+            <div
+                class="slot"
+                data-index="1">
+            </div>
+
+            <div
+                class="slot"
+                data-index="2">
+            </div>
+
+
+            <div
+                class="slot"
+                data-index="3">
+            </div>
+
+            <div
+                class="slot"
+                data-index="4">
+            </div>
+
+            <div
+                class="slot"
+                data-index="5">
+            </div>
+
+
+            <div
+                class="slot"
+                data-index="6">
+            </div>
+
+            <div
+                class="slot"
+                data-index="7">
+            </div>
+
+            <div
+                class="slot"
+                data-index="8">
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ==================================
+         PUZZLE PIECES
+    =================================== -->
+
+    <div class="pieces">
+
+        <h2>
+            🧩 Puzzle Pieces
+        </h2>
+
+
+        <div
+            id="piecesContainer"
+            class="pieces-grid">
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     PREVIEW MODAL
+======================================= -->
+
+<div
+    id="previewModal"
+    class="preview"
+>
+
+    <div class="preview-content">
+
+
+        <button
+            id="closePreview"
+            class="close-btn"
+        >
+            ✕ Close
+        </button>
+
+
+        <h2>
+            👀 Childhood Memory ❤️
+        </h2>
+
+
+        <img
+            id="previewImage"
+            src="./1000012368.jpg"
+            alt="Childhood Memory"
+            class="preview-image"
+        >
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     SUCCESS / FINAL POPUP
+======================================= -->
+
+<div
+    id="success"
+    class="success"
+>
+
+    <div class="success-box">
+
+        <h1>
+            🎉 Congratulations!
+        </h1>
+
+
+        <p>
+            You completed all 3 childhood memories! ❤️
+        </p>
+
+
+        <p>
+            🧩 Puzzle 1 ✓
+            <br>
+            🧩 Puzzle 2 ✓
+            <br>
+            🧩 Puzzle 3 ✓
+        </p>
+
+
+        <br>
+
+
+        <button id="playAgain">
+            🔄 Play Again
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- ======================================
+     JAVASCRIPT
+======================================= -->
+
+<script src="./puzzle.js"></script>
+
+
+</body>
+
+</html>

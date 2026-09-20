@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Funny Quiz 😂</title>
+
+    <!-- Quiz CSS -->
+    <link rel="stylesheet" href="./quiz.css">
+
+    <!-- Google Font -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+</head>
+
+
+<body>
+
+    <div class="quiz-page">
+
+
+        <!-- =========================================
+             HEADER
+        ========================================== -->
+
+        <header class="quiz-header">
+
+            <div class="quiz-icon">
+                😂
+            </div>
+
+            <h1>
+                Funny Quiz
+            </h1>
+
+            <p>
+                Let's see how well you know your brother! ❤️
+            </p>
+
+        </header>
+
+
+
+        <!-- =========================================
+             QUIZ CARD
+        ========================================== -->
+
+        <main class="quiz-card">
+
+
+            <!-- TOP INFORMATION -->
+
+            <div class="quiz-top">
+
+                <span id="questionNumber">
+                    Question 1 of 1
+                </span>
+
+
+                <div class="timer">
+
+                    ⏱
+
+                    <span id="timer">
+                        20
+                    </span>
+
+                    s
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 PROGRESS BAR
+            ====================================== -->
+
+            <div class="progress-container">
+
+                <div
+                    id="progressBar"
+                    class="progress-bar">
+                </div>
+
+            </div>
+
+
+
+            <!-- =====================================
+                 QUESTION
+            ====================================== -->
+
+            <section class="question-section">
+
+                <h2 id="question">
+
+                    Which institution would you
+                    like to study?
+
+                </h2>
+
+            </section>
+
+
+
+            <!-- =====================================
+                 ANSWER OPTIONS
+            ====================================== -->
+
+            <section
+                id="options"
+                class="options"
+            >
+
+
+                <!-- ===============================
+                     OPTION 1
+                ================================ -->
+
+                <button
+                    type="button"
+                    class="option"
+                    data-answer="0"
+                >
+
+                    <img
+                        src="./quiz_images/srm.png"
+                        alt="SRM"
+                    >
+
+                    <span>
+                        Option 1
+                    </span>
+
+                </button>
+
+
+
+                <!-- ===============================
+                     OPTION 2
+                ================================ -->
+
+                <button
+                    type="button"
+                    class="option"
+                    data-answer="1"
+                >
+
+                    <img
+                        src="./quiz_images/iit madras.jpg"
+                        alt="IIT Madras"
+                    >
+
+                    <span>
+                        Option 2
+                    </span>
+
+                </button>
+
+
+
+                <!-- ===============================
+                     OPTION 3
+                ================================ -->
+
+                <button
+                    type="button"
+                    class="option"
+                    data-answer="2"
+                >
+
+                    <img
+                        src="./quiz_images/nit_trichy.jpg"
+                        alt="NIT Trichy"
+                    >
+
+                    <span>
+                        Option 3
+                    </span>
+
+                </button>
+
+
+
+                <!-- ===============================
+                     OPTION 4
+                ================================ -->
+
+                <button
+                    type="button"
+                    class="option"
+                    data-answer="3"
+                >
+
+                    <img
+                        src="./quiz_images/aims.jpg"
+                        alt="AIIMS"
+                    >
+
+                    <span>
+                        Option 4
+                    </span>
+
+                </button>
+
+
+            </section>
+
+
+
+            <!-- =====================================
+                 ANSWER MESSAGE
+            ====================================== -->
+
+            <p
+                id="answerMessage"
+                class="answer-message"
+            >
+            </p>
+
+
+
+            <!-- =====================================
+                 NEXT BUTTON
+            ====================================== -->
+
+            <button
+                type="button"
+                id="nextBtn"
+                class="next-btn"
+            >
+                Next ➜
+            </button>
+
+
+        </main>
+
+
+
+        <!-- =========================================
+             RESULT SCREEN
+        ========================================== -->
+
+        <section
+            id="result"
+            class="result"
+        >
+
+            <div class="result-card">
+
+
+                <div class="result-icon">
+                    🎉
+                </div>
+
+
+                <h2>
+                    Quiz Complete!
+                </h2>
+
+
+                <p>
+                    Your Score
+                </p>
+
+
+                <div
+                    id="score"
+                    class="score"
+                >
+                    0 / 1
+                </div>
+
+
+                <p id="resultMessage">
+                    Great job! ❤️
+                </p>
+
+
+                <button
+                    type="button"
+                    id="playAgain"
+                    class="play-again"
+                >
+                    🔄 Try Again
+                </button>
+
+
+                <button
+                    type="button"
+                    id="backHome"
+                    class="back-home"
+                >
+                    🏠 Birthday Home
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================================
+             CORRECT ANSWER PREVIEW
+        ========================================== -->
+
+        <section
+            id="answerPreview"
+            class="answer-preview"
+        >
+
+            <div class="preview-card">
+
+
+                <div class="preview-icon">
+                    ❤️
+                </div>
+
+
+                <h2>
+                    ✅ Correct Answer
+                </h2>
+
+
+                <img
+                    id="correctAnswerImage"
+                    src="./quiz_images/nit_trichy.jpg"
+                    alt="Correct Answer"
+                >
+
+
+                <p id="correctAnswerText">
+
+                    This was the correct answer ❤️
+
+                </p>
+
+
+                <button
+                    type="button"
+                    id="closePreview"
+                >
+                    Continue ❤️
+                </button>
+
+
+            </div>
+
+        </section>
+
+
+
+    </div>
+
+
+
+    <!-- =========================================
+         QUIZ JAVASCRIPT
+    ========================================== -->
+
+    <script src="./quiz.js"></script>
+
+</body>
+
+</html>
